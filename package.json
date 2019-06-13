@@ -13,8 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "now-dev": "react-scripts start"
+    "now-dev": "react-scripts build"
   },
   "browserslist": {
     "production": [
