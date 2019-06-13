@@ -24,7 +24,7 @@ class SignupPage extends React.Component{
         this.setState({[name]: value},
                       () => { this.validateField(name, value) });
       }
-    
+  
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
         let emailValid = this.state.emailValid;
@@ -51,12 +51,18 @@ class SignupPage extends React.Component{
       validateForm() {
         this.setState({formValid: this.state.emailValid && this.state.passwordValid});
       }
-    
       errorClass(error) {
         return(error.length === 0 ? '' : 'has-error');
       }
-    
 
+      handleSubmit = () => {
+        const { email, password } = this.state;
+        if (email.length === 0 && password.length === 0) {
+          alert(`Please fill it all`);
+        } else {
+          alert(`Signed up with email: ${email} password: ${password}`);
+        }
+      }
     render() {
         return(
             <form onSubmit = {this.handleSubmit}>
@@ -89,8 +95,8 @@ class SignupPage extends React.Component{
                     </div>
                     <BirthdayForm />
                     <CountryRegion />
-                    <button type="submit" className="registerbtn"
-                     disabled={!this.state.formValid} >Register</button>
+                    <button type="submit" className="registerbtn" 
+                     onclick={this.validate} >Register</button>
                 </div>
             </form>
             
