@@ -1,29 +1,36 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-import 'react-datepicker/dist/react-datepicker.css';
+
 
 class BirthdayForm extends React.Component {
     constructor(props) {
-        super(props)
-        this.state = {
-            startDate: moment()
-        };
-        this.handleChange = this.handleChange.bind(this);
+      super(props);
+      this.state = {
+        startDate: new Date()
+      };
+      this.handleChange = this.handleChange.bind(this);
     }
-
+   
     handleChange(date) {
-        this.setState({
-            startDate: date
-        });
+      this.setState({
+        startDate: date
+      });
     }
-
+   
     render() {
-        return <DatePicker
+      return (
+        <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChange}
-        />;
+            peekNextMonth
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+/>
+      );
     }
-}
+  }
+
 export default BirthdayForm;
